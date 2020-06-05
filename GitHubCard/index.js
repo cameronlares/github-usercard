@@ -94,29 +94,22 @@ const cardCreator = function (arr) {
   return card
 }
 
+
+const myCard = document.querySelector('.cards')
+
 const fetchUsers = () => {
 
   followersArray.forEach(arr => {
 
-      // axios.get(`${arr}`)
-        axios.get(`https://api.github.com/users/${arr}`)
-
+      axios.get(`https://api.github.com/users/${arr}`)
         .then(response => {
           const users = response.data;
           myCard.appendChild(cardCreator(users))
           //push axios. replace followersarray with arr in axios 
-
         })
-
-      const myCard = document.querySelector('.cards')
-
-      // })
-
-      //  })
     })
     .catch(error => console.error(error));
-};
-
+}
 
 fetchUsers()
 
